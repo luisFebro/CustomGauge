@@ -2,6 +2,7 @@ package pl.pawelkleczkowski.customgaugeexample;
 
 import java.util.Locale;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -34,37 +35,25 @@ public class MainActivity extends AppCompatActivity {
 
 		Button button = findViewById(R.id.button);
 		gauge1 = findViewById(R.id.gauge1);
-		gauge2 = findViewById(R.id.gauge2);
-		gauge3 = findViewById(R.id.gauge3);
 
-		text1  = findViewById(R.id.textView1);
-		text2  = findViewById(R.id.textView2);
-		text1.setText(String.valueOf(gauge1.getValue()));
-		text2.setText(String.valueOf(gauge2.getValue()));
-    	text2.setText(String.valueOf(gauge2.getValue()));
-    	
 		button.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				gauge2.setEndValue(800);
-				gauge2.setValue(200);
-				text2.setText(String.format(Locale.getDefault(), "%1d/%2d", gauge2.getValue(), gauge2.getEndValue()));
 				new Thread() {
 			        public void run() {
-			        	for (i=0;i<100;i++) {
-					        if (i == 50) {
-						        gauge2.setEndValue(1200);
+			        	for (i=0;i<1000;i++) {
+					        if (i == 1) {
+								gauge1.setPointEndColor(Color.parseColor("#1CF499"));
+								gauge1.setPointStartColor(Color.parseColor("#1CF499"));
+								// set gauge background color
+								gauge1.setStrokeColor(Color.parseColor("#FF108553"));
 					        }
 			                try {
 			                    runOnUiThread(new Runnable() {
 			                        @Override
 			                        public void run() {
-			                        	gauge1.setValue(i*10);
-			                        	gauge2.setValue(200 + i*5);
-			                        	gauge3.setValue(i);
-			                        	text1.setText(String.valueOf(gauge1.getValue()));
-			                        	text2.setText(String.format(Locale.getDefault(), "%1d/%2d", gauge2.getValue(), gauge2.getEndValue()));
+			                        	gauge1.setValue(i*15);
 			                        }
 			                    });
 			                    Thread.sleep(50);

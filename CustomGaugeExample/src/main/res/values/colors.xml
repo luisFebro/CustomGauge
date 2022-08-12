@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- status -->
+    <color name="connected">#1CF499</color>
+    <color name="connecting">#E1D509</color>
+    <color name="disconnecting">#E1D509</color>
+    <color name="disconnected">#EE8888</color>
+
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
